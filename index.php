@@ -1,5 +1,4 @@
 <?php
-
 require 'includes/connect.php';
 
  //Declaring variables to prevent error
@@ -12,7 +11,6 @@ $user_id="";
 $pass_1 = "";
 $pass_2 = "";
 $error_array = array();
-
 if(isset($_POST['buyer_reg'])){
 
 	$buyer_user_name = strip_tags($_POST['user_name']); 
@@ -39,46 +37,26 @@ if(isset($_POST['buyer_reg'])){
  	if(empty($error_array)) {
 
  		$pass_1 = md5($pass_1);
-
 	}
-
  	$check_username_query = mysqli_query($con,"SELECT username FROM buyer_users WHERE username = '$buyer_user_name'");
-
  	$count = mysqli_num_rows($check_username_query);
-
  	if($count > 0)
  		array_push($error_array, "This user id is taken...<br>");
-
  	if(empty($error_array)) {
-
  		$query =mysqli_query($con,"INSERT INTO buyer_users VALUES ('','$buyer_user_name','$pass_1')");
                 session_start();
                 $_SESSION['buyer_user_name'] =$buyer_user_name;
  		header("Location: home1.php");
-
- 		
  		$_SESSION['pass1'] = "";
  		$_SESSION['pass2'] = "";
- 		
-
 	}
-
 }
  	?>
-
-
-
-
-
-
-
-
 
 <html>
 <head>
 	<title> Ringel Website|Index </title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
         <script src="js/jquery.js"></script>
@@ -94,146 +72,15 @@ if(isset($_POST['buyer_reg'])){
         <!-- Custom CSS -->
        
         <!-- jQuery -->
-        <script src="js/jquery.js"></script>
-        <!-- Bootstrap Core JavaScript -->
-        <script src="js/bootstrap.min.js"></script>
+      
 </head>
-<style>
-    .navbar-brand {
-    position: absolute;
-    padding: 20px;
-}
-	button{
-		cursor: pointer;
-		background: #3B5998;
-		color: #fff;
-		padding: 8px 8px 8px 8px;
-		font-size: 110%;
-		font-family: sans-serif;
-	}
-	.registration{
-		float: left;
-		}
-		#sign_button{
-			cursor: pointer;
-		}
-		/* index file css */
-
-		#login_button
-		{
-			width: 100%;
-			cursor: pointer;
-			background: #1A356E;
-			color: #fff;
-			padding:5px 30px 5px 30px;
-			font-size: 150%;
-			font-family: sans-serif;
-		}
-    footer{
-                position: fixed;
-                bottom: 0;
-                width: 100%;
-                padding: 1em;
-                color: white;
-                background-color: black;
-                clear: left;
-                text-align: center;
-                
-            }
-		 #mobile_button
-		{
-			font-size:12px;
-			height:30;
-			width:150;
-			background-color:#5B74A8; color:#FFFFFF;
-			border-top:#29447E;
-			border-right-color:#29447E;
-			border-bottom-color:#1A356E;
-			border-left-color:#29447E;
-			font-weight:bold;
-		}
-
-		/* Sign Up */
-		.inputbox
-		{
-			height:38;
-			width:265;
-			font-size:18px;
-		}
-		#sign_button
-		{
-			background:#69A74E;
-			color:#FFFFFF;
-			border-top-color:#3B6E22;
-			border-right-color:#2C5115;
-			border-left-color:#3B6E22;
-			font-size:18px;
-			height:40;
-			width:112;
-			font-weight:bold;
-			box-shadow:5px 0px 10px 1px rgb(0,0,0);
-		}
-		.left{
-			width:50%;
-			float: left;
-
-		}
-		.left div{
-			width: 95%;
-			font-family: sans-serif;
-			font-size: 125%;
-			margin-top: 32.2%;
-			margin-left: 7%;
-			line-height: 125%;
-		}
-		.login{
-			float: right;
-			margin-top:2%;
-			margin-right: 5%;
-			position:absolute;left:81.8%;top:1.2%;
-		}
-		.login a{
-			padding: 8% 28% 8% 28%;
-			background: #1A356E;
-			color: #fff;
-			text-decoration: none;
-			font-family: sans-serif;
-			font-size: 120%;
-		}
-		.left a{
-			margin-left: 7%;
-		}
-		.left a button{
-			padding: 2% 4% 2% 4%;
-			font-size: 115%;
-		}
-		#login_box{
-			width:100%;
-			height:4%;
-			font-size: 125%;
-		}
-		#login_check_box{
-			width: 10%;
-			height:2%;
-			font-size: 75%;
-
-		}
-</style>
-<body>
-	
-	<!--body background -->
-	<div style="position:absolute;left:0%;top:0%; height:100%; width:100%; z-index:-1; background:#E7EBF2">  </div> 
-	
-	
-        <div style="height:10%;" class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
+        <div class="navbar navbar-default">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>                        
             </button>
-            <a class="navbar-brand" href="index.php"><img class="img-circle" src="img/logo.png"</a> 
+            <a class="navbar-brand" href="index.php"><img class="" src="">RINGEL</a> 
            
       
         </div>
@@ -251,8 +98,9 @@ if(isset($_POST['buyer_reg'])){
                 } else {
                     ?>
                     <form method="post">
-                        <li><a href=#openModal onclick="fun()"><h2><span class="glyphicon glyphicon-log-in"></span>Login</a></h2></li>
-                    </form>
+					<ul>
+                        <li><a href=#openModal onclick="fun()"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+            </ul> </form>
                         <?php
                     }
                     ?>
@@ -338,5 +186,8 @@ if(isset($_POST['buyer_reg'])){
 		}
 
 </script>
+<script src="js/jquery.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

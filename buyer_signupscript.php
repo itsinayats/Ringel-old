@@ -1,5 +1,4 @@
 <?php
-
 require("includes/connect.php");
 
   // Getting the values from the signup page using $_POST[] and cleaning the data submitted by the user.
